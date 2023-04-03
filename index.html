@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://kit.fontawesome.com/7d931a3f92.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="estilos.css">
+  <title>Document</title>
+</head>
+<body class="check" >
+
+  <div class="container">
+    <div class="imagenes">      
+      <img src="https://dummyimage.com/400x400/000/fff&text=1" alt="">      
+      <img src="https://dummyimage.com/400x400/000/fff&text=2" alt="">      
+      <img src="https://dummyimage.com/400x400/000/fff&text=3" alt="">      
+      <img src="https://dummyimage.com/400x400/000/fff&text=4" alt="">            
+      <img src="https://dummyimage.com/400x400/000/fff&text=5" alt="">      
+      <img src="https://dummyimage.com/400x400/000/fff&text=6" alt="">      
+      <img src="https://dummyimage.com/400x400/000/fff&text=7" alt="">      
+      <img src="https://dummyimage.com/400x400/000/fff&text=8" alt="">            
+    </div>
+    <div class="controles">
+      <i class="fa-solid fa-arrow-left atras" ></i>
+      <i class="fa-solid fa-arrow-right adelante" ></i>
+    </div>
+  </div>  
+
+  
+  
+</body>
+
+<script>
+  let numeroDeImg = document.querySelector(".imagenes").childElementCount
+  let arrayDeImagenes = document.querySelector(".imagenes").children
+  
+  for (let i = 0; i < arrayDeImagenes.length; i++) {    
+    arrayDeImagenes[i].setAttribute("data-index", `${i}` )            
+  }
+
+  let n=0
+  setInterval(()=>{
+    let w = document.querySelector(".container").clientWidth
+    n=n+w
+    if(n > (w * (numeroDeImg-1))  ){
+      n=0
+      console.log(n,'final')
+    }
+    
+    let carrusel = document.querySelector('.imagenes')
+    carrusel.style.transform = `translateX(${-n}px)`
+        
+    let widthh = document.querySelector(".container").clientWidth    
+    },5000)
+
+    window.addEventListener("resize",e=>{
+      location.reload()
+    })
+
+  
+
+  let w = document.querySelector(".container").clientWidth  
+  
+  document.querySelector(".atras").addEventListener("click",e=>{      
+      n=n-w
+      j++
+      let carrusel = document.querySelector('.imagenes')
+      console.log(w,'webos')
+      if(n < 0){
+        n= w * (numeroDeImg -1)
+      }
+      carrusel.style.transform = `translateX(${-n}px)`
+    })
+
+    
+    document.querySelector(".adelante").addEventListener("click",e=>{      
+      n = n+w      
+      let carrusel = document.querySelector('.imagenes')      
+      
+      if( n > (numeroDeImg-1)*w ){
+        n=0      }
+      
+      carrusel.style.transform = `translateX( ${-n}px )`      
+    })
+</script>
+
+
+</html>
