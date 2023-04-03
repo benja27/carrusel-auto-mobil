@@ -28,7 +28,7 @@ i:hover{
 
 
 .container{
-    min-width: 400px;
+    min-width: 200px;
     width: 800px;
     max-width: 1200px;
     aspect-ratio: 1/1;
